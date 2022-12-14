@@ -5,23 +5,25 @@ export interface iUserContextProps{
 }
 
 export interface iUserApiResponse {
-    accessToken: string
+    accessToken: string;
     user: {
-      id: string
-      name: string
-      email: string
+      id: string;
+      name: string;
+      email: string;
     }
   }
 
   export interface iRegisterApiResponse {
-    accessToken: string
+    accessToken: string;
     user: {
-      id: string
-      name: string
-      email: string
+      id: string;
+      name: string;
+      email: string;
     }
   }
-  
+
+
+
   export interface iValueContext{
       userLogin: (formData : iLoginFormValues) => Promise<void>;
       userRegister: (formData: iRegisterFormValues) => Promise<void>;

@@ -1,13 +1,14 @@
 import React from 'react';
 import { ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
+import { Container } from './components/Container';
 import { UserProvider } from './context/UserContext/UserContext';
 import { RoutesMain as Routes } from './routes';
 import GlobalStyle from './styles/GlobalStyle';
 
 function App() {
   return (
-    <>
+    <Container>
     <ToastContainer
       position="top-right"
       autoClose={5000}
@@ -24,7 +25,7 @@ function App() {
     <UserProvider>
       <Routes />
     </UserProvider>
-    </>
+    </Container>
   );
 }
 export default App;
