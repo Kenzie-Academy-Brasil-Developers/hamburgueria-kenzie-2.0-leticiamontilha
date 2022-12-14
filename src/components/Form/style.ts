@@ -76,3 +76,9 @@ export const Formulario = styled.form`
     }
 
 `
+
+export const ErrorMessage = styled.p`
+font-size: 12px;
+font-weight: 600;
+color: red;
+`
