@@ -1,14 +1,39 @@
+import { useForm } from "react-hook-form";
+import { SubmitHandler } from "react-hook-form/dist/types";
 import { Link } from "react-router-dom"
+// import { LoginSchema } from "../../pages/Login/LoginSchema";
 import { Formulario } from "./style"
 
+
+interface iLoginFormValues{
+    email: string;
+    password: string;
+}
+
 export const FormLogin = () => {
+
+    const { register, handleSubmit, reset, formState: {errors} } = useForm<iLoginFormValues>({
+        // mode: "onBlur",
+        // resolver: yupResolver(LoginSchema)
+    });
+
+    const submit: SubmitHandler<iLoginFormValues> = (data) => {
+
+        console.log(data)
+        reset()
+
+    }
+
+
+
     return (
-        <Formulario>
+        <Formulario noValidate onSubmit={handleSubmit(submit)}>
             <label htmlFor="">Email</label>
-            <input type="text" placeholder="Email" />
+            <input type="text" placeholder="Email" {...register("email")} />
+            {/* {errors.email && <ErrorMessage>{errors.email.message}</ErrorMessage>} */}
 
             <label htmlFor="">Senha</label>
-            <input type="text" placeholder="Senha" />
+            <input type="password" placeholder="Senha" {...register("password")} />
 
             <button className="btnLogar">Logar</button>
 
