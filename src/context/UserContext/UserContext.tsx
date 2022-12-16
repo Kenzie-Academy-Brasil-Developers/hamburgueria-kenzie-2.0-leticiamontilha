@@ -3,16 +3,17 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { iLoginFormValues, iRegisterFormValues } from "../../components/Form";
 import api from "../../services/api";
-import { iRegisterApiResponse, iUserApiResponse, iUserContextProps, iValueContext } from "./types";
+import { iRegisterApiResponse, iUserApiResponse, iUserContextProps, iUserLogin, iValueContext } from "./types";
 
 
 export const UserContext = createContext<iValueContext>({} as iValueContext);
 
 export const UserProvider = ({children}: iUserContextProps) => {
 
-    const [ user, setUser ] = useState<iUserApiResponse | {}>({})
+    const [ user, setUser ] = useState<iUserLogin | null>(null)
 
     const navigate = useNavigate()
+
 
     const userLogin = async (formData : iLoginFormValues) => {
 
@@ -51,10 +52,8 @@ export const UserProvider = ({children}: iUserContextProps) => {
         } 
     }
 
-
-
     return (
-        <UserContext.Provider value={{ userLogin, userRegister }}>
+        <UserContext.Provider value={{ userLogin, userRegister, setUser }}>
             {children}
         </UserContext.Provider>
     )

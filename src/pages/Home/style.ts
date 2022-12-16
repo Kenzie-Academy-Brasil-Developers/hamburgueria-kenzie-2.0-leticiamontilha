@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const Ulstyle = styled.ul`
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 15px;
 
     width: 90%;
@@ -17,6 +18,7 @@ export const Ulstyle = styled.ul`
         display: flex;
         flex-direction: column;
         width: 200px;
+        height: 300px;
         border: 2px solid #27AE60;
         border-radius: 5px;
     }
@@ -31,7 +33,6 @@ export const Ulstyle = styled.ul`
 
     .divImg > img {
         width: 60%;
-
     }
 
     .divDescription{

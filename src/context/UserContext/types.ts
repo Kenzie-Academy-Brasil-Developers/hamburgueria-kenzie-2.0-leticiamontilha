@@ -1,3 +1,4 @@
+import { Dispatch, SetStateAction } from "react";
 import { iLoginFormValues, iRegisterFormValues } from "../../components/Form";
 
 export interface iUserContextProps{
@@ -13,6 +14,17 @@ export interface iUserApiResponse {
     }
   }
 
+  export interface iUserLogin{
+      id: string;
+      name: string;
+      email: string;
+  }
+
+  export interface iUserState {
+     user: null;
+     setUser: React.Dispatch<React.SetStateAction<null>>;
+  }
+
   export interface iRegisterApiResponse {
     accessToken: string;
     user: {
@@ -23,9 +35,9 @@ export interface iUserApiResponse {
   }
 
 
-
   export interface iValueContext{
       userLogin: (formData : iLoginFormValues) => Promise<void>;
       userRegister: (formData: iRegisterFormValues) => Promise<void>;
+      setUser: Dispatch<SetStateAction<iUserLogin | null>>;
   }
   

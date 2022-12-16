@@ -29,9 +29,6 @@ const GlobalStyle = createGlobalStyle`
 body {
     font-family: 'Inter', sans-serif;
     background-color: var(--color-grey-4);
-    display: flex;
-    align-items: center;
-    justify-content: center;
   }
 
   li,a {
