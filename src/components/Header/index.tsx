@@ -12,7 +12,7 @@ import { CartContext } from "../../context/CartContext/CartContext"
 export const Header = () => {
 
     const { setUser } = useContext(UserContext)
-    const { isModalCart, setIsModalCart, cartItens} = useContext(CartContext)
+    const { isModalCart, setIsModalCart, cartItens, setListProducts, allProducts} = useContext(CartContext)
     
     const navigate = useNavigate()
 
@@ -22,14 +22,30 @@ export const Header = () => {
         navigate("/")
     }
 
+    const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
+            const value = e.target.value
+
+            const filtro = allProducts.filter(elem => elem.category.toLowerCase().includes(value.toLowerCase()) || elem.name.toLowerCase().includes(value.toLowerCase()))
+
+            if(filtro.length === 0 ){
+                setListProducts(allProducts)
+    
+            } else {
+                setListProducts(filtro)
+
+            }
+    };
+    
+    
+   
 
     return (
         <StyledHeader>
             <img src={logo} alt="Logo Hamburgueria" />
            <div>
-                <form >
-                    <input type="text" placeholder="Digitar Pesquisa"/>
-                    <button type="submit"><BiSearchAlt/></button>
+                <form>
+                    <input type="text" placeholder="Digitar Pesquisa" onChange={handleChange}/>
+                    <button disabled><BiSearchAlt/></button>
                 </form>
                 <div className="divIcons">
                     <div className="cartIcon">

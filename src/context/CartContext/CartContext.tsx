@@ -16,6 +16,7 @@ export interface iProductsApiResponse {
 export const CartProvider = ({children}: iCartContextProps) => {
 
     const [isModalCart, setIsModalCart ] = useState(false);
+    const [ allProducts, setAllProducts ] = useState<iProductsApiResponse[]>([]);
     const [listProducts, setListProducts] = useState<iProductsApiResponse[]>([]);
     const [cartItens, setCartItens] = useState<iCartProducts[]>([]);
 
@@ -29,6 +30,8 @@ export const CartProvider = ({children}: iCartContextProps) => {
 
                 setListProducts(response.data)
                 
+                setAllProducts(response.data)
+                
             } catch (error) {
                 console.log(error)
             }
@@ -40,7 +43,7 @@ export const CartProvider = ({children}: iCartContextProps) => {
 
 
     return (
-        <CartContext.Provider value={{ isModalCart, setIsModalCart, listProducts, setListProducts, cartItens, setCartItens }}>
+        <CartContext.Provider value={{ isModalCart, setIsModalCart, listProducts, setListProducts, cartItens, setCartItens,  allProducts, setAllProducts  }}>
             {children}
         </CartContext.Provider>
     )

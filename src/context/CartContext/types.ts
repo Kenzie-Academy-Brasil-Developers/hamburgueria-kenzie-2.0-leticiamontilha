@@ -21,4 +21,6 @@ export interface iValueContext{
     setListProducts: React.Dispatch<React.SetStateAction<iProductsApiResponse[]>>;
     cartItens:  iCartProducts[];
     setCartItens: React.Dispatch<React.SetStateAction<iCartProducts[]>>;
+    allProducts: iProductsApiResponse[];
+    setAllProducts: React.Dispatch<React.SetStateAction<iProductsApiResponse[]>>;
 }
